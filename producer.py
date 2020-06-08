@@ -22,7 +22,7 @@ def post_data():
 class RpcClient(object):
     def __init__(self):
         self.credentials = pika.PlainCredentials('openstack', 'rabbit')
-        self.connection = pika.BlockingConnection(pika.ConnectionParameters('192.168.233.155', 5672, '/', self.credentials))
+        self.connection = pika.BlockingConnection(pika.ConnectionParameters('192.168.233.34', 5672, '/', self.credentials))
 
         self.channel = self.connection.channel()
 
@@ -31,10 +31,7 @@ class RpcClient(object):
 
         #self.channel.basic_consume(self.on_response, auto_ack=True,
         #                           queue=self.callback_queue)
-	self.channel.basic_consume(
-            queue=self.callback_queue,
-            on_message_callback=self.on_response,
-            auto_ack=True)
+        self.channel.basic_consume(queue=self.callback_queue, on_message_callback=self.on_response, auto_ack=True)
 
     def on_response(self, ch, method, props, body):
         if self.corr_id == props.correlation_id:
@@ -64,4 +61,3 @@ if __name__=="__main__":
 #data = '<m2m:ae xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="MY_SENSOR3"><api>app-sensor</api><lbl>Type/sensor Category/temperature Location/home</lbl><rr>false</rr></m2m:ae>'
 #response = http_post_rpc.call(data)
 #print(" [.] Got %r" % response)
-
