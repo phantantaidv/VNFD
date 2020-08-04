@@ -1,7 +1,7 @@
 import requests
 import json
 
-TACKER_URL = 'http://192.168.2.59'
+TACKER_URL = 'http://192.168.1.111'
 
 
 def get_token():
