@@ -26,8 +26,7 @@ channel.queue_declare(queue='rpc_queue')
 
 def send_to_om2m(payload):
     headers = {"X-M2M-Origin":"admin:admin", "Content-Type": "application/xml;ty=2"}
-#    response = requests.post('http://192.168.233.214:8080/~/in-cse/in-name/SENSOR/DATA', data=payload, headers=headers)
-    response = requests.post('http://172.24.4.251:8080/~/in-cse', data=payload, headers=headers)
+    response = requests.post('http://localhost:8080/~/in-cse/in-name/SENSOR/DATA', data=payload, headers=headers)
 
     return response
 
