@@ -9,7 +9,7 @@ def getHostIp():
     lines = str(os.popen('ifconfig').read())
     markIP = lines.index('inet addr:')
     ip = lines[markIP + 10: markIP + 27]
-return ip
+    return ip
 
 
 lines = str(os.popen('ifconfig').read())
