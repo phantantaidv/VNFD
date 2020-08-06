@@ -1,9 +1,22 @@
 import pika
 import uuid
 import json
+import os
 from flask import Flask, request
 app = Flask(__name__)
 
+def getHostIp():
+    lines = str(os.popen('ifconfig').read())
+    markIP = lines.index('inet addr:')
+    ip = lines[markIP + 10: markIP + 27]
+return ip
+
+
+lines = str(os.popen('ifconfig').read())
+markIP = lines.index('inet addr:')
+#print(markIP)
+
+ip = lines[markIP + 10: markIP + 27]
 @app.route("/")
 def hello():
     return "Hello World!"
@@ -22,7 +35,7 @@ def post_data():
 class RpcClient(object):
     def __init__(self):
         self.credentials = pika.PlainCredentials('openstack', 'rabbit')
-        self.connection = pika.BlockingConnection(pika.ConnectionParameters('192.168.233.34', 5672, '/', self.credentials))
+        self.connection = pika.BlockingConnection(pika.ConnectionParameters(getHostIp(), 5672, '/', self.credentials))
 
         self.channel = self.connection.channel()
 
