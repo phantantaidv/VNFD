@@ -46,15 +46,6 @@ def findLoadbalancerIp():
     getResponse = requests.get(getNetworkListUrl, headers=headers)
     # print("Server Response status:" + str(getResponse.status_code))
     getServerListResult = str(getResponse.json())
-    markPoint = getServerListResult.find('Balancer')
-    LoadbalancerIp = getServerListResult[markPoint + 300: markPoint + 315]
+    markPoint = getServerListResult.find("""'{"VDU5""")
+    LoadbalancerIp = getServerListResult[markPoint + 11: markPoint + 26]
     return LoadbalancerIp
-
-def writeFile(filename, content):
-    f = open(filename, 'w')
-    f.write(content)
-    f.close()
-
-def extractIp():
-    Content = "LOAD_BALANCER_IP = '{ip}'".format(ip = findLoadbalancerIp())
-    writeFile('param.py', Content)
