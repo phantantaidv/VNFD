@@ -47,5 +47,8 @@ def findLoadbalancerIp():
     # print("Server Response status:" + str(getResponse.status_code))
     getServerListResult = str(getResponse.json())
     markPoint = getServerListResult.find("""'{"VDU5""")
-    LoadbalancerIp = getServerListResult[markPoint + 11: markPoint + 26]
+    if '"' in getServerListResult[markPoint + 25]:
+        LoadbalancerIp = getServerListResult[markPoint + 11: markPoint + 25]
+    else:
+        LoadbalancerIp = getServerListResult[markPoint + 11: markPoint + 26]
     return LoadbalancerIp
