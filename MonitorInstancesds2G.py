@@ -11,9 +11,10 @@ print(len(ip))
 print("Instances's IP:", ip)
 
 while True:
-    CPU_Pct = str(round(float(
+    CPU_Pct = round(float(
         os.popen('''grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage }' ''').readline()),
-                        2))
+                        2)*2
+    CPU_Pct = str(CPU_Pct)
 
     # print results
     mem = str(os.popen('free -t -m').readlines())
