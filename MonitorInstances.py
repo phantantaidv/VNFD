@@ -9,7 +9,7 @@ ip = str(ips)
 ip = ip[2:-4]
 print(len(ip))
 print("Instances's IP:", ip)
-
+time.sleep(30)
 while True:
     CPU_Pct = str(round(float(
         os.popen('''grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage }' ''').readline()),
