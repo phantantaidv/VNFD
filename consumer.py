@@ -4,8 +4,6 @@ import requests
 import time
 import socket
 import json
-import getLoadbalancerIP
-loadBalancerIp = getLoadbalancerIP.findLoadbalancerIp()
 
 while 1:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -19,7 +17,7 @@ while 1:
         time.sleep(1)
 credentials = pika.PlainCredentials('openstack', 'rabbit')
 connection = pika.BlockingConnection(
-    pika.ConnectionParameters(loadBalancerIp, 5672, '/', credentials))
+    pika.ConnectionParameters('192.168.233.104', 5672, '/', credentials))
 
 channel = connection.channel()
 
