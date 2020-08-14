@@ -9,7 +9,16 @@ ip = str(ips)
 ip = ip[2:-4]
 print(len(ip))
 print("Instances's IP:", ip)
-time.sleep(30)
+condition = True
+while condition == True:
+    time.sleep(2)
+    CPU_Pct = str(round(float(
+        os.popen('''grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage }' ''').readline()),
+        2))
+    if float(CPU_Pct) <= 40:
+        condition = False
+    else:
+        condition = True
 ACK_message = "ACK"
 r = requests.post('http://192.168.1.111:9999/ACKmessage', data=ACK_message)
 print("<Response [{status_code}] {reason}>".format(status_code=r.status_code, reason=r.reason))
