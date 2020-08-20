@@ -11,11 +11,11 @@ print(len(ip))
 print("Instances's IP:", ip)
 condition = True
 while condition == True:
-    time.sleep(2)
+    time.sleep(1)
     CPU_Pct = str(round(float(
         os.popen('''grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage }' ''').readline()),
         2))
-    if float(CPU_Pct) <= 40:
+    if float(CPU_Pct) <= 35:
         condition = False
     else:
         condition = True
