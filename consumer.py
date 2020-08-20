@@ -4,6 +4,7 @@ import requests
 import time
 import socket
 import json
+import os
 
 condition = True
 while condition == True:
