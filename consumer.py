@@ -50,12 +50,12 @@ def on_request(ch, method, props, body):
                      properties=pika.BasicProperties(correlation_id = \
                                                          props.correlation_id),
                      body=str(response))
-#     ch.basic_ack(delivery_tag = method.delivery_tag)
+    ch.basic_ack(delivery_tag = method.delivery_tag)
 
-# channel.basic_qos(prefetch_count=1)
-channel.basic_qos(prefetch_size=0, prefetch_count=100, global_qos=False)
-#channel.basic_consume(on_request, queue='rpc_queue')
-channel.basic_consume(queue='rpc_queue', on_message_callback=on_request, auto_ack=False)
+channel.basic_qos(prefetch_count=1)
+#channel.basic_qos(prefetch_size=0, prefetch_count=100, global_qos=False)
+channel.basic_consume(on_request, queue='rpc_queue')
+#channel.basic_consume(queue='rpc_queue', on_message_callback=on_request, auto_ack=False)
 
 
 print(" [x] Awaiting RPC requests")
