@@ -7,20 +7,7 @@ from subprocess import check_output
 ips = check_output(['hostname', '--all-ip-addresses'])
 ip = str(ips)
 ip = ip[2:-4]
-print(len(ip))
 print("Instances's IP:", ip)
-"""
-condition = True
-while condition == True:
-    time.sleep(1)
-    CPU_Pct = round(float(
-        os.popen('''grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage }' ''').readline()),
-        2)*2
-    if float(CPU_Pct) <= 70:
-        condition = False
-    else:
-        condition = True
-"""
 ACK_message = "ACK"
 r = requests.post('http://192.168.1.111:9999/ACKmessage', data=ACK_message)
 print("<Response [{status_code}] {reason}>".format(status_code=r.status_code, reason=r.reason))
