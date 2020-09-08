@@ -13,7 +13,7 @@ condition = True
 while condition == True:
     time.sleep(1)
     CPU_Pct = str(round(float(
-        os.popen('''grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage }' ''').readline()),
+        os.popen('''top -b -n2 | grep "Cpu(s)" | awk '{print $2+$4}' | tail -n1 ''').readline()),
         2))
     if float(CPU_Pct) <= 35:
         condition = False
@@ -21,7 +21,7 @@ while condition == True:
         condition = True
 while True:
     CPU_Pct = str(round(float(
-        os.popen('''grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage }' ''').readline()),
+        os.popen('''top -b -n2 | grep "Cpu(s)" | awk '{print $2+$4}' | tail -n1 ''').readline()),
                         2))
 
     # print results
