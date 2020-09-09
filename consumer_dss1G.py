@@ -6,17 +6,6 @@ import socket
 import json
 import os
 
-condition = True
-while condition == True:
-    time.sleep(2)
-    CPU_Pct = str(round(float(
-        os.popen('''top -b -n2 | grep "Cpu(s)" | awk '{print $2+$4}' | tail -n1''').readline()),
-        2))
-    if float(CPU_Pct) <= 37:
-        condition = False
-    else:
-        condition = True
-
 while 1:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     result = sock.connect_ex(('127.0.0.1',8080))
