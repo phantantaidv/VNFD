@@ -6,6 +6,16 @@ import socket
 import json
 import os
 
+
+condition = True	
+while condition == True:	
+    time.sleep(1)	
+    CPU_Pct = str(psutil.cpu_percent())
+    if float(CPU_Pct) <= 37:	
+        condition = False	
+    else:	
+        condition = True
+
 while 1:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     result = sock.connect_ex(('127.0.0.1',8080))
