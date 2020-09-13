@@ -9,15 +9,6 @@ ip = ip[2:-4]
 print(len(ip))
 print("Instances's IP:", ip)
 
-condition = True	
-while condition == True:	
-    time.sleep(1)	
-    CPU_Pct = str(psutil.cpu_percent())
-    if float(CPU_Pct) <= 35:	
-        condition = False	
-    else:	
-        condition = True
-
 i = 0
 while True:
     if i != 0:
