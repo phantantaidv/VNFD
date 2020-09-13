@@ -8,14 +8,6 @@ import os
 import psutil
 
 
-condition = True	
-while condition == True:	
-    time.sleep(2)	
-    CPU_Pct = psutil.cpu_percent()*2	
-    if float(CPU_Pct) <= 72:	
-        condition = False	
-    else:	
-        condition = True
 
 while 1:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
