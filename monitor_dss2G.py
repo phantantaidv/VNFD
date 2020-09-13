@@ -9,14 +9,6 @@ ip = ip[2:-4]
 print(len(ip))
 print("Instances's IP:", ip)
 
-condition = True	
-while condition == True:	
-    time.sleep(1)	
-    CPU_Pct = psutil.cpu_percent()*2	
-    if float(CPU_Pct) <= 70:	
-        condition = False	
-    else:	
-        condition = True
         
 ACK_message = "ACK"
 r = requests.post('http://192.168.1.111:9999/ACKmessage', data=ACK_message)
