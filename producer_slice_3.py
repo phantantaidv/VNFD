@@ -35,7 +35,7 @@ def post_data():
 class RpcClient(object):
     def __init__(self):
         self.credentials = pika.PlainCredentials('openstack', 'rabbit')
-        self.connection = pika.BlockingConnection(pika.ConnectionParameters('192.168.033.104', 5672, '/', self.credentials))
+        self.connection = pika.BlockingConnection(pika.ConnectionParameters('192.168.134.104', 5672, '/', self.credentials))
 
         self.channel = self.connection.channel()
 
