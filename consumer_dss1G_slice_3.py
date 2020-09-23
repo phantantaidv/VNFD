@@ -19,7 +19,7 @@ while 1:
         time.sleep(1)
 credentials = pika.PlainCredentials('openstack', 'rabbit')
 connection = pika.BlockingConnection(
-    pika.ConnectionParameters('192.168.033.104', 5672, '/', credentials))
+    pika.ConnectionParameters('192.168.134.104', 5672, '/', credentials))
 
 channel = connection.channel()
 
