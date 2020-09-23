@@ -22,7 +22,7 @@ while True:
         print("CPU Usage = " + CPU_Pct, "%")
         print("*******************************")
         payload = "{ip}, {CPU_Pct}".format(ip=ip, CPU_Pct=CPU_Pct)
-        r = requests.post('http://192.168.1.111:9999/Instances', data=payload)
+        r = requests.post('http://192.168.1.111:9999/Instances_slice_2', data=payload)
         print("<Response [{status_code}] {reason}>".format(status_code=r.status_code, reason=r.reason))
     i += 1
     time.sleep(1)
