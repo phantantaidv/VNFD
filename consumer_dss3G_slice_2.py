@@ -49,4 +49,3 @@ channel.basic_consume(queue='rpc_queue', on_message_callback=on_request)
 
 print(" [x] Awaiting RPC requests")
 channel.start_consuming()
-© 2020 GitHub, Inc.
