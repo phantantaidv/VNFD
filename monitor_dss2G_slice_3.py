@@ -17,7 +17,7 @@ i = 0
 
 while True:
     if i != 0:
-        CPU_Pct = psutil.cpu_percent()*2
+        CPU_Pct = round(psutil.cpu_percent()*2,2)
         CPU_Pct = str(CPU_Pct)
         print("*******************************")
         print("CPU Usage = " + CPU_Pct, "%")
